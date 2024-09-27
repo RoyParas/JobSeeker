@@ -56,7 +56,7 @@ export const deleteApplication = AsyncHandler(async (req, res, next) => {
   if (!application) {
     return next(new ErrorHandler("Application Not Found!", 404));
   }
-  await Application.deleteOne({ _id: id });
+  await application.deleteOne();
   res.status(200).json({
     success: true,
     message: "Application Deleted Successfully",
