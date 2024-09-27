@@ -15,7 +15,7 @@ export const postJob = asyncHandler(async (req, res, next) => {
   const { role } = req.user; //From authorization.js
   if (role === "Job Seeker") {
     return next(
-      new ErrorHandler("Job Seeker is not accessed to Post the Job", 400)
+      new ErrorHandler("Job Seeker is not accessed to Post the Job", 403)
     );
   }
   const {
@@ -90,7 +90,7 @@ export const getMyJobs = asyncHandler(async (req, res, next) => {
   const { role } = req.user;
   if (role === "Job Seeker") {
     return next(
-      new ErrorHandler("Job Seeker is not accessed to this Feature", 400)
+      new ErrorHandler("Job Seeker is not accessed to this Feature", 403)
     );
   }
 
@@ -107,7 +107,7 @@ export const updateJob = asyncHandler(async (req, res, next) => {
     return next(
       new ErrorHandler(
         "Job Seeker is not accessed to Post or Update the Job",
-        400
+        403
       )
     );
   }
@@ -177,7 +177,7 @@ export const deleteJob = asyncHandler(async (req, res, next) => {
     return next(
       new ErrorHandler(
         "Job Seeker is not accessed to Post or Delete the Job",
-        400
+        403
       )
     );
   }

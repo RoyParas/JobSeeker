@@ -11,7 +11,7 @@ export const getEmployerAllApplication = AsyncHandler(
       return next(
         new ErrorHandler(
           "You are not authorized to access all the applications!",
-          400
+          403
         )
       );
     }
@@ -31,7 +31,7 @@ export const getJobSeekerAllApplication = AsyncHandler(
       return next(
         new ErrorHandler(
           "You are not authorized to access all the applications!",
-          400
+          403
         )
       );
     }
@@ -48,7 +48,7 @@ export const deleteApplication = AsyncHandler(async (req, res, next) => {
   const { role } = req.user;
   if (role === "Employer") {
     return next(
-      new ErrorHandler("You are not accessed to delete the Application")
+      new ErrorHandler("You are not accessed to delete the Application", 403)
     );
   }
   const { id } = req.params;
@@ -68,7 +68,7 @@ export const postApplication = AsyncHandler(async (req, res, next) => {
   const { role } = req.user;
   if (role === "Employer") {
     return next(
-      new ErrorHandler("You are not accessed to post the Application", 400)
+      new ErrorHandler("You are not accessed to post the Application", 403)
     );
   }
 
